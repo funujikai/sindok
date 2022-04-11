@@ -1,0 +1,318 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "API APLIKASI PMM",
+        "description": "beego has a very cool tools to autogenerate documents for your API",
+        "version": "1.0.0",
+        "termsOfService": "http://beego.me/",
+        "contact": {
+            "email": "astaxie@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "basePath": "/v1",
+    "paths": {
+        "/data/kelompok/{cabangid}": {
+            "get": {
+                "tags": [
+                    "data"
+                ],
+                "description": "Get Data Kelompok Mekaar",
+                "operationId": "DataController.API Data Kelompok",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization Token",
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "cabangid",
+                        "description": "CabangID ex: 90108",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} models.Object.Id"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/data/nasabah/{cabangid}/{kelompokid}": {
+            "get": {
+                "tags": [
+                    "data"
+                ],
+                "description": "Get Data Nasabah Mekaar",
+                "operationId": "DataController.API Data Nasabah",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization Token",
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "cabangid",
+                        "description": "CabangID ex: 90001",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "kelompokid",
+                        "description": "KelompokID ex: 90001007  isi null jika tanpa kelompokid",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} models.Object.Id"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/data/set-upload-file": {
+            "post": {
+                "tags": [
+                    "data"
+                ],
+                "description": "Get Data Kelompok Mekaar",
+                "operationId": "DataController.API Data Kelompok",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization Token",
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "data",
+                        "description": "request data untuk di update",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Data_set_upload_file"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} models.Object.Id"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/master/cabang": {
+            "get": {
+                "tags": [
+                    "master"
+                ],
+                "description": "Get Data Nasabah Mekaar",
+                "operationId": "MasterController.API Data Nasabah",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization Token",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} models.Object.Id"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/other/file/{data}/{tipe}": {
+            "get": {
+                "tags": [
+                    "other"
+                ],
+                "description": "PkmImages",
+                "operationId": "OtherController.PkmImages",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "data",
+                        "description": "file",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "tipe",
+                        "description": "tipe file ex images | pdf",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{\"code\": 200,\"message\": \"Data berhasil disimpan\"}",
+                        "schema": {
+                            "$ref": "#/definitions/global.APIResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "{\"code\": 404,\"message\": \"Error not found\"}"
+                    },
+                    "405": {
+                        "description": "{\"code\": 405,\"message\": \"Error json\"}"
+                    },
+                    "500": {
+                        "description": "{\"code\": 500,\"message\": \"Error sql\"}"
+                    }
+                }
+            }
+        },
+        "/user/login-cabang": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Login menggunakan User Mekaar Integrasi",
+                "operationId": "UserController.Login Cabang",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "User",
+                        "description": "Username ex: 90004",
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "Pass",
+                        "description": "Password ex: 12345678",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} models.T_mkr_users"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/login-pusat": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Login menggunakan User SSO",
+                "operationId": "UserController.Login Pusat",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "User",
+                        "description": "Username ex: WALubis0508",
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "Pass",
+                        "description": "Password ex: pnm12345",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} models.T_mkr_users"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "global.APIResponse": {
+            "title": "APIResponse",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Data_set_upload_file": {
+            "title": "Data_set_upload_file",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "tipefile1": {
+                    "type": "string"
+                },
+                "tipefile2": {
+                    "type": "string"
+                },
+                "tipefile3": {
+                    "type": "string"
+                },
+                "tipefile4": {
+                    "type": "string"
+                },
+                "urlfile1": {
+                    "type": "string"
+                },
+                "urlfile2": {
+                    "type": "string"
+                },
+                "urlfile3": {
+                    "type": "string"
+                },
+                "urlfile4": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "data",
+            "description": "Endpoint\n"
+        },
+        {
+            "name": "user",
+            "description": "Endpoint\n"
+        },
+        {
+            "name": "master",
+            "description": "Endpoint\n"
+        },
+        {
+            "name": "other",
+            "description": "Endpoint\n"
+        }
+    ]
+}
