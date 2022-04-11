@@ -144,7 +144,7 @@
                 }
             }
         },
-        "/other/file/{data}/{tipe}": {
+        "/other/file/{data}": {
             "get": {
                 "tags": [
                     "other"
@@ -156,13 +156,6 @@
                         "in": "path",
                         "name": "data",
                         "description": "file",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "path",
-                        "name": "tipe",
-                        "description": "tipe file ex images | pdf",
                         "required": true,
                         "type": "string"
                     }
