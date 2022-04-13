@@ -43,6 +43,33 @@ func init() {
             Filters: nil,
             Params: nil})
 
+    beego.GlobalControllerRouter["PMM/controllers:MasterController"] = append(beego.GlobalControllerRouter["PMM/controllers:MasterController"],
+        beego.ControllerComments{
+            Method: "Role",
+            Router: "/role",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["PMM/controllers:MasterController"] = append(beego.GlobalControllerRouter["PMM/controllers:MasterController"],
+        beego.ControllerComments{
+            Method: "Role_detail",
+            Router: "/role-detail",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["PMM/controllers:MasterController"] = append(beego.GlobalControllerRouter["PMM/controllers:MasterController"],
+        beego.ControllerComments{
+            Method: "Tipe_file",
+            Router: "/tipe-file",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
     beego.GlobalControllerRouter["PMM/controllers:OtherController"] = append(beego.GlobalControllerRouter["PMM/controllers:OtherController"],
         beego.ControllerComments{
             Method: "ShowS3Image",

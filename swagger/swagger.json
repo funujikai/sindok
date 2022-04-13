@@ -124,8 +124,8 @@
                 "tags": [
                     "master"
                 ],
-                "description": "Get Data Nasabah Mekaar",
-                "operationId": "MasterController.API Data Nasabah",
+                "description": "get data cabang",
+                "operationId": "MasterController.master cabang",
                 "parameters": [
                     {
                         "in": "header",
@@ -136,7 +136,82 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "{string} models.Object.Id"
+                        "description": "{string} models.Master_cabang"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/master/role": {
+            "get": {
+                "tags": [
+                    "master"
+                ],
+                "description": "get data role",
+                "operationId": "MasterController.master role",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization Token",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} models.Master_role"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/master/role-detail": {
+            "get": {
+                "tags": [
+                    "master"
+                ],
+                "description": "get data role detail",
+                "operationId": "MasterController.master role detail",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization Token",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} models.Master_role_detail"
+                    },
+                    "403": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/master/tipe-file": {
+            "get": {
+                "tags": [
+                    "master"
+                ],
+                "description": "get data tipe file",
+                "operationId": "MasterController.master tipe file",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization Token",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} models.Master_tipefile"
                     },
                     "403": {
                         "description": "body is empty"
