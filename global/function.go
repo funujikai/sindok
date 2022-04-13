@@ -65,8 +65,6 @@ func GenerateToken(d string) string {
 	return (tokenString)
 }
 
-
-
 func PutS3(file_src, file_s3 string)error{
     ctx := context.Background()
     minioClient,err := ConnS3Storage()
@@ -133,7 +131,6 @@ func GetS3(file string) (*minio.Object,error){
 
     return object,nil
 }
-
 
 func MapB64SaveFile(data_arr map[string]string,path string)(map[string]string,error) {
 
