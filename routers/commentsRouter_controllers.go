@@ -72,7 +72,7 @@ func init() {
 
     beego.GlobalControllerRouter["PMM/controllers:OtherController"] = append(beego.GlobalControllerRouter["PMM/controllers:OtherController"],
         beego.ControllerComments{
-            Method: "ShowS3Image",
+            Method: "ShowS3File",
             Router: "/file/:data",
             AllowHTTPMethods: []string{"get"},
             MethodParams: param.Make(),

@@ -123,13 +123,20 @@ func GetS3(file string) (*minio.Object,error){
         return nil,err
     }    
     // fmt.Println(file)
-    // object, err := minioClient.GetObject(context.Background(), "mekdi", "development/test2.jpeg", minio.GetObjectOptions{})
+
     object, err := minioClient.GetObject(context.Background(), bucketName , file, minio.GetObjectOptions{})
     if err != nil {
         return nil,err
     }
 
-    return object,nil
+	return object,nil
+
+	// err = minioClient.FGetObject(context.Background(), bucketName, file, "./temp/"+file, minio.GetObjectOptions{})
+	// if err != nil {
+	// 	return nil,err
+	// }	
+
+    // return nil,nil
 }
 
 func MapB64SaveFile(data_arr map[string]string,path string)(map[string]string,error) {
