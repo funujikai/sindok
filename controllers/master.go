@@ -33,6 +33,25 @@ func (c *MasterController) Cabang() {
 	c.ServeJSON()
 }
 
+// @Title master cabang
+// @Description get data cabang
+// @Param	Authorization header string  false "Authorization Token"
+// @Success 200 {string} models.Master_user
+// @Failure 403 body is empty
+// @router /user [get]
+func (c *MasterController) User() {
+
+	data,err := models.User()
+	if err != nil {
+		c.Ctx.Output.SetStatus(500)
+		c.Data["json"] = global.APIResponse{Code: 500,Message: err.Error()}
+		c.ServeJSON()
+	}
+
+	c.Data["json"] = data
+	c.ServeJSON()
+}
+
 // @Title master tipe file
 // @Description get data tipe file
 // @Param	Authorization header string  false "Authorization Token"

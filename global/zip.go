@@ -63,7 +63,7 @@ func addFiles(zipw *zip.Writer, basePath, baseInZip string) {
 			// if err != nil {
             //     fmt.Println("error 1",err)
             // }
-
+            
             // Add some files to the archive.
             f, err := zipw.Create(baseInZip+file.Name())
             if err != nil {
@@ -73,6 +73,7 @@ func addFiles(zipw *zip.Writer, basePath, baseInZip string) {
             if err != nil {
                 fmt.Println("error 3",err)
             }
+
         } else if file.IsDir() {
 
             // Recurse

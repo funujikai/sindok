@@ -70,6 +70,15 @@ func init() {
             Filters: nil,
             Params: nil})
 
+    beego.GlobalControllerRouter["PMM/controllers:MasterController"] = append(beego.GlobalControllerRouter["PMM/controllers:MasterController"],
+        beego.ControllerComments{
+            Method: "User",
+            Router: "/user",
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
     beego.GlobalControllerRouter["PMM/controllers:OtherController"] = append(beego.GlobalControllerRouter["PMM/controllers:OtherController"],
         beego.ControllerComments{
             Method: "DownloadZipS3File",

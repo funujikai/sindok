@@ -145,6 +145,22 @@ paths:
           description: '{string} models.Master_tipefile'
         "403":
           description: body is empty
+  /master/user:
+    get:
+      tags:
+      - master
+      description: get data cabang
+      operationId: MasterController.master cabang
+      parameters:
+      - in: header
+        name: Authorization
+        description: Authorization Token
+        type: string
+      responses:
+        "200":
+          description: '{string} models.Master_user'
+        "403":
+          description: body is empty
   /other/download-zip-file/{cabangid}/{loanid}/{siklus}:
     get:
       tags:
@@ -253,7 +269,13 @@ definitions:
     title: Data_set_upload_file
     type: object
     properties:
-      id:
+      cabangid:
+        type: string
+      created_by:
+        type: string
+      loanid:
+        type: string
+      siklus:
         type: string
       tipefile1:
         type: string

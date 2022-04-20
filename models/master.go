@@ -34,6 +34,40 @@ func Cabang()([]Master_cabang,error) {
 	return data,nil
 }
 
+
+type Master_user struct {
+	Username string `json:"username" db:"username"`
+	Nip string `json:"nip" db:"nip"`
+	Nama string `json:"nama" db:"nama"`
+	Id_role string `json:"id_role" db:"id_role"`
+	Cabang interface{} `json:"cabang" db:"cabang"`
+	Unit_kerja interface{} `json:"unit_kerja" db:"unit_kerja"`
+	Lokasi string `json:"lokasi" db:"lokasi"`
+}
+
+func User()([]Master_user,error) {
+	data := make([]Master_user, 0)
+	db,err := global.Conn()
+	if err != nil {
+		return data,err
+	}		
+	defer db.Close()	
+	var query string
+
+
+	query = " SELECT username,nip,nama,id_role,cabang,unit_kerja,lokasi FROM master_user "
+
+	err = db.RawSQL(query).Do(&data)
+
+	if err != nil {		
+		// global.Logging("ERROR","models GetIdProspekTerpakai ---> "+query+" ---> " + err.Error())	
+		return data,err
+	}		
+
+	return data,nil
+}
+
+
 type Master_tipefile struct {
 	Id string `json:"id" db:"id"`
 	Tipefile string `json:"tipefile" db:"tipefile"`
@@ -121,3 +155,5 @@ func RoleDetail()([]Master_role_detail,error) {
 
 	return data,nil
 }
+
+

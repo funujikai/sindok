@@ -93,3 +93,6 @@ func (c *DataController) SetUploadFile() {
 	c.Data["json"] = global.APIDataResponse{Code: 200,Message: "Berhasil Login",Data: res}
 	c.ServeJSON()
 }
+
+
+
