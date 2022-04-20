@@ -64,7 +64,7 @@ func (c *DataController) Kelompok() {
 // @Description Get Data Kelompok Mekaar
 // @Param	Authorization header string  false "Authorization Token"
 // @Param   data body models.Data_set_upload_file true "request data untuk di update"
-// @Success 200 {string} models.Object.Id
+// @Success 200 {object} models.Data_set_upload_file
 // @Failure 403 body is empty
 // @router /set-upload-file [post]
 func (c *DataController) SetUploadFile() {
@@ -79,13 +79,17 @@ func (c *DataController) SetUploadFile() {
 
 	
 
-	err = models.SetUploadFile(data)
+	res,err := models.SetUploadFile(data)
 	if err != nil {
 		c.Ctx.Output.SetStatus(500)
 		c.Data["json"] = global.APIResponse{Code: 500,Message: err.Error()}
 		c.ServeJSON()
 	}
 
-	c.Data["json"] = global.APIResponse{Code: 200,Message: "Update Berhasil"}
+	// c.Data["json"] = global.APIResponse{Code: 200,Message: "Update Berhasil"}
+	// c.ServeJSON()
+
+	
+	c.Data["json"] = global.APIDataResponse{Code: 200,Message: "Berhasil Login",Data: res}
 	c.ServeJSON()
 }

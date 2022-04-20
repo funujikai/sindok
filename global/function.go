@@ -139,6 +139,30 @@ func GetS3(file string) (*minio.Object,error){
     // return nil,nil
 }
 
+func GetSavetoPathS3(file,path string) (error){
+
+	if file=="" {
+		return nil
+	}
+
+	bucketName,err := beego.AppConfig.String("bucketName")
+    if err != nil {
+        return err
+    }  
+
+    minioClient,err := ConnS3Storage()
+    if err != nil {
+        return err
+    }    
+
+	err = minioClient.FGetObject(context.Background(), bucketName, file, path+file, minio.GetObjectOptions{})
+	if err != nil {
+		return err
+	}	
+
+    return nil
+}
+
 func MapB64SaveFile(data_arr map[string]string,path string)(map[string]string,error) {
 
     var fileName = make(map[string]string)

@@ -7,6 +7,7 @@ require github.com/beego/beego/v2 v2.0.1
 require github.com/smartystreets/goconvey v1.6.4
 
 require (
+	github.com/alexmullins/zip v0.0.0-20180717182244-4affb64b04d0 // indirect
 	github.com/astaxie/beego v1.12.3 // indirect
 	github.com/beevik/guid v0.0.0-20170504223318-d0ea8faecee0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect

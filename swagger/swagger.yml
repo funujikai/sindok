@@ -76,7 +76,9 @@ paths:
           $ref: '#/definitions/models.Data_set_upload_file'
       responses:
         "200":
-          description: '{string} models.Object.Id'
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Data_set_upload_file'
         "403":
           description: body is empty
   /master/cabang:
@@ -143,6 +145,37 @@ paths:
           description: '{string} models.Master_tipefile'
         "403":
           description: body is empty
+  /other/download-zip-file/{cabangid}/{loanid}/{siklus}:
+    get:
+      tags:
+      - other
+      description: PkmImages
+      operationId: OtherController.PkmImages
+      parameters:
+      - in: path
+        name: cabangid
+        description: 'CabangID ex: 90001'
+        required: true
+        type: string
+      - in: path
+        name: loanid
+        description: 'Loanid ex: 9000101M2000002'
+        required: true
+        type: string
+      - in: path
+        name: siklus
+        description: 'Siklus ex: 1'
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '"file zip"'
+        "404":
+          description: '{"code": 404,"message": "Error not found"}'
+        "405":
+          description: '{"code": 405,"message": "Error json"}'
+        "500":
+          description: '{"code": 500,"message": "Error sql"}'
   /other/file/{data}:
     get:
       tags:
